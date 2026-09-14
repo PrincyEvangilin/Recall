@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Recall — Smart Revision</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">R</div>
+
+            <div>
+                <h1>Recall</h1>
+                <span>Study smarter.</span>
+            </div>
+        </div>
+
+        <nav class="navigation">
+
+            <button class="nav-item active" data-page="dashboard">
+                <span>⌂</span>
+                <b>Dashboard</b>
+            </button>
+
+            <button class="nav-item" data-page="flashcards">
+                <span>▣</span>
+                <b>Flashcards</b>
+            </button>
+
+            <button class="nav-item" data-page="revision">
+                <span>↻</span>
+                <b>Revision</b>
+            </button>
+
+            <button class="nav-item" data-page="test">
+                <span>✓</span>
+                <b>Self Test</b>
+            </button>
+
+            <button class="nav-item" data-page="subjects">
+                <span>◈</span>
+                <b>Subjects</b>
+            </button>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <div class="tip-box">
+                <span>✦</span>
+
+                <div>
+                    <strong>Study Tip</strong>
+                    <p>Small revisions regularly beat last-minute cramming.</p>
+                </div>
+            </div>
+
+            <button id="themeToggle" class="theme-button">
+                <span id="themeIcon">☾</span>
+                <b>Dark Mode</b>
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div>
+                <p class="welcome-small">YOUR STUDY SPACE</p>
+                <h2 id="pageTitle">Good to see you!</h2>
+            </div>
+
+            <button id="mobileTheme" class="mobile-theme">☾</button>
+
+        </header>
+
+
+        <!-- ================= DASHBOARD ================= -->
+
+        <section id="dashboard" class="page active-page">
+
+            <div class="hero">
+
+                <div class="hero-content">
+
+                    <span class="hero-label">
+                        YOUR LEARNING JOURNEY
+                    </span>
+
+                    <h3>
+                        Remember more.<br>
+                        <em>Stress less.</em>
+                    </h3>
+
+                    <p>
+                        Recall helps you revise at the right time,
+                        test yourself, and understand your learning progress.
+                    </p>
+
+                    <button class="hero-button" id="heroStartButton">
+                        Start Revising →
+                    </button>
+
+                </div>
+
+                <div class="hero-decoration">
+
+                    <div class="floating-card card-one">
+                        What is DBMS?
+                    </div>
+
+                    <div class="floating-card card-two">
+                        ✓ Remembered
+                    </div>
+
+                    <div class="floating-card card-three">
+                        Java → OOP
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- STATS -->
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-top">
+                        <span>Total Cards</span>
+                        <div class="stat-icon purple">▣</div>
+                    </div>
+
+                    <strong id="totalCards">0</strong>
+
+                    <p>Your revision library</p>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-top">
+                        <span>Due Today</span>
+                        <div class="stat-icon pink">↻</div>
+                    </div>
+
+                    <strong id="dueCards">0</strong>
+
+                    <p>Ready for revision</p>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-top">
+                        <span>Mastery</span>
+                        <div class="stat-icon green">★</div>
+                    </div>
+
+                    <strong id="masteryPercent">0%</strong>
+
+                    <p>Overall learning progress</p>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-top">
+                        <span>Study Streak</span>
+                        <div class="stat-icon orange">🔥</div>
+                    </div>
+
+                    <strong id="streakCount">0</strong>
+
+                    <p>Days of consistency</p>
+
+                </div>
+
+            </div>
+
+
+            <!-- NEXT STUDY -->
+
+            <div class="next-study">
+
+                <div class="next-study-content">
+
+                    <span class="section-label">
+                        YOUR NEXT BEST STUDY
+                    </span>
+
+                    <h3 id="nextStudyTitle">
+                        Start building your collection
+                    </h3>
+
+                    <p id="nextStudyText">
+                        Add some flashcards and Recall will help you
+                        decide what deserves your attention.
+                    </p>
+
+                </div>
+
+                <button
+                    id="nextStudyButton"
+                    class="primary-button"
+                >
+                    Add Flashcard
+                </button>
+
+            </div>
+
+
+            <!-- LOWER DASHBOARD -->
+
+            <div class="dashboard-grid">
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <span class="section-label">
+                                RECENT CARDS
+                            </span>
+
+                            <h3>Continue learning</h3>
+                        </div>
+
+                        <button
+                            class="text-button"
+                            data-page-link="flashcards"
+                        >
+                            View all →
+                        </button>
+
+                    </div>
+
+                    <div id="recentCards"></div>
+
+                </div>
+
+
+                <div class="panel streak-panel">
+
+                    <span class="section-label">
+                        CONSISTENCY
+                    </span>
+
+                    <h3>Your study activity</h3>
+
+                    <div class="big-streak">
+
+                        <span>🔥</span>
+
+                        <strong id="dashboardStreak">
+                            0
+                        </strong>
+
+                        <small>day streak</small>
+
+                    </div>
+
+                    <div class="activity-bar">
+                        <div id="activityFill"></div>
+                    </div>
+
+                    <p id="streakMessage">
+                        Start studying today to build your streak.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= FLASHCARDS ================= -->
+
+        <section id="flashcards" class="page">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="section-label">
+                        YOUR COLLECTION
+                    </span>
+
+                    <h3>Flashcards</h3>
+
+                    <p>
+                        Turn difficult topics into easy revisions.
+                    </p>
+
+                </div>
+
+                <button
+                    class="primary-button"
+                    id="addCardButton"
+                >
+                    + New Card
+                </button>
+
+            </div>
+
+
+            <!-- SEARCH -->
+
+            <div class="toolbar">
+
+                <div class="search-box">
+
+                    <span>⌕</span>
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search questions, answers or subjects..."
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- FILTERS -->
+
+            <div class="filter-row">
+
+                <button class="filter-button active" data-filter="all">
+                    All
+                </button>
+
+                <button class="filter-button" data-filter="due">
+                    Due
+                </button>
+
+                <button class="filter-button" data-filter="new">
+                    New
+                </button>
+
+                <button class="filter-button" data-filter="hard">
+                    Hard
+                </button>
+
+                <button class="filter-button" data-filter="okay">
+                    Okay
+                </button>
+
+                <button class="filter-button" data-filter="easy">
+                    Easy
+                </button>
+
+                <button class="filter-button" data-filter="favorite">
+                    ★ Favorites
+                </button>
+
+                <select id="subjectFilter">
+                    <option value="all">
+                        All Subjects
+                    </option>
+                </select>
+
+            </div>
+
+
+            <div class="results-count" id="resultsCount">
+                0 cards
+            </div>
+
+
+            <div
+                id="flashcardGrid"
+                class="flashcard-grid"
+            ></div>
+
+        </section>
+
+
+        <!-- ================= REVISION ================= -->
+
+        <section id="revision" class="page">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="section-label">
+                        SPACED REVISION
+                    </span>
+
+                    <h3>Revision Session</h3>
+
+                    <p>
+                        Recall what you know before checking the answer.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="revision-info">
+
+                <div>
+                    <strong id="revisionCount">0</strong>
+                    <span>cards due today</span>
+                </div>
+
+                <div class="revision-rule">
+
+                    <span>Hard</span>
+                    <b>1 day</b>
+
+                    <span>Okay</span>
+                    <b>3 days</b>
+
+                    <span>Easy</span>
+                    <b>7 days</b>
+
+                </div>
+
+            </div>
+
+
+            <div id="revisionArea"></div>
+
+        </section>
+
+
+        <!-- ================= SELF TEST ================= -->
+
+        <section id="test" class="page">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="section-label">
+                        ACTIVE RECALL
+                    </span>
+
+                    <h3>Self Test</h3>
+
+                    <p>
+                        Test yourself without opening your notes.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div id="testSetup" class="test-box">
+
+                <div class="test-icon">
+                    ✦
+                </div>
+
+                <h3>
+                    Ready to test yourself?
+                </h3>
+
+                <p>
+                    Choose a subject and check how well
+                    you actually remember it.
+                </p>
+
+                <select id="testSubject">
+                    <option value="all">
+                        All Subjects
+                    </option>
+                </select>
+
+                <button
+                    id="startTest"
+                    class="primary-button"
+                >
+                    Start Test →
+                </button>
+
+            </div>
+
+
+            <div
+                id="testArea"
+                class="test-box hidden"
+            >
+
+                <div class="test-progress">
+
+                    <span id="testNumber">
+                        Question 1
+                    </span>
+
+                    <span id="testScore">
+                        Score: 0
+                    </span>
+
+                </div>
+
+
+                <div class="question-card">
+
+                    <span class="question-label">
+                        QUESTION
+                    </span>
+
+                    <h3 id="testQuestion"></h3>
+
+                    <button
+                        id="revealAnswer"
+                        class="secondary-button"
+                    >
+                        Reveal Answer
+                    </button>
+
+
+                    <div
+                        id="testAnswer"
+                        class="answer-box hidden"
+                    >
+
+                        <span>ANSWER</span>
+
+                        <p></p>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="testActions"
+                    class="test-actions hidden"
+                >
+
+                    <button
+                        id="wrongAnswer"
+                        class="danger-button"
+                    >
+                        ✕ I didn't know
+                    </button>
+
+                    <button
+                        id="correctAnswer"
+                        class="success-button"
+                    >
+                        ✓ I knew it
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="testResult"
+                class="test-box hidden"
+            >
+
+                <div class="result-icon">
+                    ★
+                </div>
+
+                <span class="section-label">
+                    TEST COMPLETE
+                </span>
+
+                <h3 id="resultTitle">
+                    Well done!
+                </h3>
+
+                <div class="result-score">
+
+                    <strong id="finalScore">
+                        0%
+                    </strong>
+
+                    <span>
+                        your score
+                    </span>
+
+                </div>
+
+                <p id="resultMessage"></p>
+
+                <button
+                    id="restartTest"
+                    class="primary-button"
+                >
+                    Take Another Test
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SUBJECTS ================= -->
+
+        <section id="subjects" class="page">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="section-label">
+                        YOUR LEARNING
+                    </span>
+
+                    <h3>Subjects</h3>
+
+                    <p>
+                        Understand which subjects need more attention.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="subjectGrid"
+                class="subject-grid"
+            ></div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- ================= CARD MODAL ================= -->
+
+<div
+    id="cardModal"
+    class="modal-overlay"
+>
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <div>
+
+                <span class="section-label">
+                    FLASHCARD
+                </span>
+
+                <h3 id="modalTitle">
+                    Create a card
+                </h3>
+
+            </div>
+
+            <button
+                id="closeModal"
+                class="close-button"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="cardForm">
+
+            <label>
+
+                Question
+
+                <textarea
+                    id="questionInput"
+                    placeholder="e.g. What is normalization?"
+                    required
+                ></textarea>
+
+            </label>
+
+
+            <label>
+
+                Answer
+
+                <textarea
+                    id="answerInput"
+                    placeholder="Explain the answer in your own words..."
+                    required
+                ></textarea>
+
+            </label>
+
+
+            <label>
+
+                Subject
+
+                <input
+                    type="text"
+                    id="subjectInput"
+                    placeholder="e.g. DBMS"
+                    required
+                >
+
+            </label>
+
+
+            <div class="form-buttons">
+
+                <button
+                    type="button"
+                    id="cancelModal"
+                    class="secondary-button"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    id="saveCardButton"
+                    class="primary-button"
+                >
+                    Create Card
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div
+    id="toast"
+    class="toast"
+>
+    <span>✓</span>
+    <p></p>
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
